@@ -32,10 +32,9 @@
 <!-- carousal -->
 <div class="carousel">
     <div class="list">
-<%--        <c:foreach var ="movie" items="${movies}">--%>
-            <div class="item" style="background-image: url(<%-- ${movie.imagePath}--%> Assets/homepageImages/image10.jpg);">
+            <div class="item" style="background-image: url(Assets/homepageImages/iron.jpg);">
                 <div class="content">
-                    <div class="title">Welcome to Movie Land</div>
+                    <div class="title">Welcome to Movie|Land</div>
                     <div class="name">Explore the World of Cinema</div>
                     <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
                     <div class="btn">
@@ -43,23 +42,10 @@
                     </div>
                 </div>
             </div>
-<%--        </c:foreach>--%>
-
-        <div class="item" style="background-image: url(Assets/homepageImages/maze_runner.jpg);">
-            <div class="content">
-                <div class="title">Welcome to Movie Land</div>
-                <div class="name">Explore the World of Cinema</div>
-                <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
-                <div class="btn">
-                    <button class="book-now-btn" style="background-color: white"><a style="background-color: transparent; text-decoration: none; color: black; font-weight: normal" href="RetrieveAllMovieServlet">See More</a></button>
-
-                </div>
-            </div>
-        </div>
 
         <div class="item" style="background-image: url(Assets/homepageImages/wildrobot.jpg);">
             <div class="content">
-                <div class="title">Welcome to Movie Land</div>
+                <div class="title">Welcome to Movie|Land</div>
                 <div class="name">Explore the World of Cinema</div>
                 <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
                 <div class="btn">
@@ -69,9 +55,9 @@
             </div>
         </div>
 
-        <div class="item" style="background-image: url(Assets/homepageImages/image11.jpg);">
+        <div class="item" style="background-image: url(Assets/homepageImages/deadpool1.jpg);">
             <div class="content">
-                <div class="title">Welcome to Movie Land</div>
+                <div class="title">Welcome to Movie|Land</div>
                 <div class="name">Explore the World of Cinema</div>
                 <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
                 <div class="btn">
@@ -81,9 +67,21 @@
             </div>
         </div>
 
-        <div class="item" style="background-image: url(Assets/homepageImages/spider.jpg);">
+        <div class="item" style="background-image: url(Assets/homepageImages/fall_guy.jpeg);">
             <div class="content">
-                <div class="title">Welcome to Movie Land</div>
+                <div class="title">Welcome to Movie|Land</div>
+                <div class="name">Explore the World of Cinema</div>
+                <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
+                <div class="btn">
+                    <button class="book-now-btn" style="background-color: white"><a style="background-color: transparent; text-decoration: none; color: black; font-weight: normal" href="RetrieveAllMovieServlet">See More</a></button>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="item" style="background-image: url(Assets/homepageImages/image3.jpg);">
+            <div class="content">
+                <div class="title">Welcome to Movie|Land</div>
                 <div class="name">Explore the World of Cinema</div>
                 <div class="des">Discover the latest hits, timeless classics, and everything in between. Your movie journey starts here!</div>
                 <div class="btn">
@@ -112,40 +110,40 @@
     <div class="movie-cards-container">
         <!-- Card 1 -->
         <div class="movie-card">
-            <img src="Assets/homepageImages/image1.jpg" alt="Movie 1">
+            <img src="Assets/homepageImages/gladiator_2.jpg" alt="Movie 1">
             <div class="movie-details">
-                <h3>Maze Runner</h3>
-                <p>An exciting movie full of adventure and thrills!</p>
+                <h3>Gladiator II</h3>
+                <p>Years after witnessing the death of Maximus at the hands of his uncle, Lucius must enter the Colosseum..</p>
                 <button class="book-now-btn"><a style="background-color: transparent; text-decoration: none; color: white;" href="RetrieveAllMovieServlet">Book Now</a></button>
             </div>
         </div>
 
         <!-- Card 2 -->
         <div class="movie-card">
-            <img src="Assets/homepageImages/image2.jpg" alt="Movie 2">
+            <img src="Assets/homepageImages/red_one.jpg" alt="Movie 2">
             <div class="movie-details">
-                <h3>Spider Man</h3>
-                <p>unforgettable moments!</p>
+                <h3>Red One</h3>
+                <p>When a villain kidnaps Santa Claus from the North Pole, an E.L.F. (Extremely Large and Formidable) operative..</p>
                 <button class="book-now-btn"><a style="background-color: transparent; text-decoration: none; color: white;" href="RetrieveAllMovieServlet">Book Now</a></button>
             </div>
         </div>
 
         <!-- Card 3 -->
         <div class="movie-card">
-            <img src="Assets/homepageImages/image3.jpg" alt="Movie 3">
+            <img src="Assets/homepageImages/amaran_2.jpg" alt="Movie 3">
             <div class="movie-details">
-                <h3>Joker 2</h3>
-                <p>Dive into a thrilling story of excitement!</p>
+                <h3>Amaran</h3>
+                <p>A true-life story of Major Mukund Varadarajan, a commissioned officer in the Indian Army..</p>
                 <button class="book-now-btn"><a style="background-color: transparent; text-decoration: none; color: white;" href="RetrieveAllMovieServlet">Book Now</a></button>
             </div>
         </div>
 
         <!-- Card 4 -->
         <div class="movie-card">
-            <img src="Assets/homepageImages/image4.jpg" alt="Movie 4">
+            <img src="Assets/homepageImages/wicked.jpg" alt="Movie 4">
             <div class="movie-details">
-                <h3>Deadpool</h3>
-                <p>A mind-bending thriller.</p>
+                <h3>Wicked</h3>
+                <p>Misunderstood because of her green skin, a young woman named Elphaba..</p>
                 <button class="book-now-btn"><a style="background-color: transparent; text-decoration: none; color: white;" href="RetrieveAllMovieServlet">Book Now</a></button>
             </div>
         </div>
@@ -158,37 +156,37 @@
     <div class="movie-cards-container">
         <!-- Card 1 -->
         <div class="movie-card">
-            <img src="Assets/homepageImages/spider.jpg" alt="Movie 1">
+            <img src="Assets/homepageImages/avatar.jpg" alt="Movie 1">
             <div class="movie-details">
-                <h3>Spider Man 2</h3>
-                <p>An exciting movie full of adventure and thrills!</p>
+                <h3>Avatar: Fire and Ash</h3>
+                <p>An upcoming American epic science fiction film a sequel to Avatar franchise.</p>
             </div>
         </div>
 
         <!-- Card 2 -->
         <div class="movie-card">
-            <img src="Assets/homepageImages/oppen.jpeg" alt="Movie 2">
+            <img src="Assets/homepageImages/f1.jpg" alt="Movie 2">
             <div class="movie-details">
-                <h3>Oppenheimer</h3>
-                <p>A heartwarming tale that you can’t miss.</p>
+                <h3>F1-The Movie</h3>
+                <p>A former driver finds himself back in action when he returns to Formula 1 racing to take on the sport's top competition.</p>
             </div>
         </div>
 
         <!-- Card 3 -->
         <div class="movie-card">
-            <img src="Assets/homepageImages/harry.jpg" alt="Movie 3">
+            <img src="Assets/homepageImages/how_to_train_ur_dragon.jpg" alt="Movie 3">
             <div class="movie-details">
-                <h3>Harry Potter</h3>
-                <p>An action-packed blockbuster!</p>
+                <h3>How to Train your Dragon</h3>
+                <p>How to Train Your Dragon is an upcoming American fantasy film written, co-produced,and directed by Dean DeBlois.</p>
             </div>
         </div>
 
         <!-- Card 4 -->
         <div class="movie-card">
-            <img src="Assets/homepageImages/wildrobot.jpg" alt="Movie 4">
+            <img src="Assets/homepageImages/mufasa.jpg" alt="Movie 4">
             <div class="movie-details">
-                <h3>Wild Robot</h3>
-                <p>A mind-bending thriller.</p>
+                <h3>Mufasa: The Lion King</h3>
+                <p>Lost and alone, orphaned cub Mufasa meets a sympathetic lion named Taka, the heir to a royal bloodline.</p>
             </div>
         </div>
     </div>

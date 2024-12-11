@@ -42,6 +42,16 @@
             color: var(--text-primary);
             line-height: 1.6;
             overflow-x: hidden;
+            opacity: 0;
+            animation: fadeIn ease-in-out forwards;
+        }
+        @keyframes fadeIn{
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
         .container {
             width: 100%;
@@ -233,7 +243,7 @@
                     <div class="showtimes">
                         <button class="time-button">
                             <a class="timeTag"
-                               href="${pageContext.request.contextPath}/SeatBookingServlet?id=${movie.id}&date=<%=date.toString()%>&time=10:30 AM">
+                               href="seat_selection.jsp">
                                 10:30 AM
                             </a>
                         </button>

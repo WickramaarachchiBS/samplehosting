@@ -16,6 +16,18 @@
             outline: 1px; border:1px;
             transition: all .2s linear;
         }
+        body {
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        @keyframes fadeIn{
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
         .container{
             display: flex;
             justify-content: center;

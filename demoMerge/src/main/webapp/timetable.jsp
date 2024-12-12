@@ -43,7 +43,7 @@
             line-height: 1.6;
             overflow-x: hidden;
             opacity: 0;
-            animation: fadeIn ease-in-out forwards;
+            animation: fadeIn 1s ease-in-out forwards;
         }
         @keyframes fadeIn{
             from {

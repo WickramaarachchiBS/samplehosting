@@ -17,18 +17,6 @@
 <!-- navbar -->
 <jsp:include page="navbar.jsp" />
 
-<!-- dynamic carousal java -->
-<%--<%@ page import="org.example.demomerge.dao.MovieDAO" %>--%>
-<%--<%@ page import="org.example.demomerge.dto.Movie" %>--%>
-<%--<%@ page import="java.util.List" %>--%>
-
-<%--<%--%>
-<%--    // Automatically retrieve movies when page loads--%>
-<%--    MovieDAO dao = new MovieDAO();--%>
-<%--    List<Movie> carouselMovies = dao.getAllMovies();--%>
-<%--    request.setAttribute("movies", carouselMovies);--%>
-<%--%>--%>
-
 <!-- carousal -->
 <div class="carousel">
     <div class="list">
@@ -193,59 +181,6 @@
 </section>
 
 <jsp:include page="footer.jsp" />
-
-<%--<!-- footer -->--%>
-<%--<footer class="footer">--%>
-<%--    <div class="footer-container">--%>
-<%--        <!-- Logo and About -->--%>
-<%--        <div class="footer-section about">--%>
-<%--            <h2>Movie Land</h2>--%>
-<%--            <p>--%>
-<%--                Explore the world of cinema with Movie Land. Your destination for the latest blockbusters, timeless classics, and movie reviews.--%>
-<%--            </p>--%>
-<%--            <div class="social-icons">--%>
-<%--                <a href="#"><i class="fab fa-facebook-f"></i></a>--%>
-<%--                <a href="#"><i class="fab fa-twitter"></i></a>--%>
-<%--                <a href="#"><i class="fab fa-instagram"></i></a>--%>
-<%--                <a href="#"><i class="fab fa-youtube"></i></a>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
-<%--        <!-- Quick Links -->--%>
-<%--        <div class="footer-section links">--%>
-<%--            <h2>Quick Links</h2>--%>
-<%--            <ul>--%>
-<%--                <li><a href="#">Home</a></li>--%>
-<%--                <li><a href="#">Movies</a></li>--%>
-<%--                <li><a href="#">Locations</a></li>--%>
-<%--                <li><a href="#">About Us</a></li>--%>
-<%--                <li><a href="#">Contact Us</a></li>--%>
-<%--            </ul>--%>
-<%--        </div>--%>
-
-<%--        <!-- Latest News -->--%>
-<%--        <div class="footer-section news">--%>
-<%--            <h2>Latest News</h2>--%>
-<%--            <div class="news-alert">--%>
-<%--                <p>🎥 *Avatar 3 Trailer Released!* - Coming to cinemas in 2025.</p>--%>
-<%--                <p>🍿 *New Netflix Hits* - Don’t miss the latest binge-worthy series.</p>--%>
-<%--                <p>🎬 *Oscars 2024 Nominations* - Check out the top contenders!</p>--%>
-<%--            </div>--%>
-<%--        </div>--%>
-
-<%--        <!-- Contact Info -->--%>
-<%--        <div class="footer-section contact">--%>
-<%--            <h2>Contact Us</h2>--%>
-<%--            <p><i class="fas fa-phone"></i> +1 234 567 890</p>--%>
-<%--            <p><i class="fas fa-envelope"></i> support@movieland.com</p>--%>
-<%--            <p><i class="fas fa-map-marker-alt"></i> 123 Movie Lane, Film City, CA</p>--%>
-<%--        </div>--%>
-<%--    </div>--%>
-<%--    <div class="footer-bottom">--%>
-<%--        <p>&copy; 2024 Movie Land | Designed by VS</p>--%>
-<%--        <a href="RetrieveAdminMovieServlet">admin</a>--%>
-<%--    </div>--%>
-<%--</footer>--%>
 
 <!-- carousal script -->
 <script src="Assets/script.js"></script>

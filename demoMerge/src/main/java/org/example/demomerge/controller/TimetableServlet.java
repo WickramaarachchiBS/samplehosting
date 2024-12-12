@@ -27,6 +27,15 @@ public class TimetableServlet extends HttpServlet {
         // Set movie as request attribute
         request.setAttribute("movie", movie);
 
+        //session
+        HttpSession session = request.getSession(false); // Retrieve the existing session
+        if (session != null) {
+            session.setAttribute("mId", movieId); // Add or update the attribute
+        } else {
+            session = request.getSession(); // Create a new session
+            session.setAttribute("mId", movieId); // Add or update the attribute
+        }
+
         // Forward to timetable jsp page
         RequestDispatcher dispatcher = request.getRequestDispatcher("/timetable.jsp");
         dispatcher.forward(request, response);

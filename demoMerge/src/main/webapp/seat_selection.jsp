@@ -241,8 +241,8 @@
 
     <div class="container">
         <div class="selected-movie">
-            <h2 id="movie-name">Deadpool and Wolverine</h2>
-            <p id="movie-details">10 Dec 24, 06:25 PM</p>
+            <h2 id="movie-name">${movie.title}</h2>
+            <p id="movie-details">${sessionScope.selectedDate}, ${sessionScope.selectedTime}</p>
         </div>
 
         <div class="timer-container">
@@ -384,12 +384,15 @@
 
 
         <div class="navigation">
-<%--            <button class="prev-page"><a href="timetable.jsp" style="text-decoration: none">&#8678;</a></button>--%>
-<%--            <button class="next-page"><a href="payment2.jsp" style="text-decoration: none">&#8680;</a></button>--%>
-            <button class="next-page"><a href="payment2.jsp" style="text-decoration: none; color: black">Proceed to Payment</a></button>
+            <form id="seatForm" action="payment2.jsp" method="POST">
+                <input type="hidden" name="selectedSeats" is="selectedSeatsInput">
+                <button type="submit" class="next-page">Proceed to Payment</button>
+            </form>
         </div>
 
     </div>
+    <%--            <button class="prev-page"><a href="timetable.jsp" style="text-decoration: none">&#8678;</a></button>--%>
+    <%--            <button class="next-page"><a href="payment2.jsp" style="text-decoration: none">&#8680;</a></button>--%>
 
 
     <!-- scripts -->
@@ -421,13 +424,18 @@
         startCountdown();
 
 
-
         // Seat Selection Logic
         const seats = document.querySelectorAll('.cinema-seats .seat');
         const selectedSeatsElement = document.getElementById('selected-seats');
         const totalPriceElement = document.getElementById('total-price');
-        const prevPageButton = document.querySelector('.prev-page');
+        const prevPageButton = document.querySelector(".prev-page");
         const nextPageButton = document.querySelector('.next-page');
+        const seatForm = document.getElementById('seatForm');
+        const selectedSeatsInput = document.getElementById('selectedSeatsInput');
+
+        seatForm.addEventListener('submit', () => {
+            selectedSeatsInput.value = selectedSeats.join(',');
+        });
 
         let selectedSeats = [];
         const seatPrice = 700.00;
@@ -448,15 +456,16 @@
             selectedSeatsElement.textContent = selectedSeats.length;
             totalPriceElement.textContent = (selectedSeats.length * seatPrice).toFixed(2);
         }
-
-        prevPageButton.addEventListener('click', () => {
-            console.log('Navigate to the previous page');
-        });
-
-        nextPageButton.addEventListener('click', () => {
-            console.log('Navigate to the next page');
-        });
     </script>
+
+    <%
+        //retrieve the selected seats from the request
+        String seatsList = request.getParameter("selectedSeats");
+
+        //store the selected seats in the session
+        session.setAttribute("selectedSeats", seatsList);
+        session.setAttribute("totalPrice", (selectedSeats.length * seatPrice));
+    %>
 
 </body>
 </html>

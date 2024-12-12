@@ -32,23 +32,22 @@ public class SeatBookingServlet extends HttpServlet {
         request.setAttribute("selectedDate", selectedDate);
         request.setAttribute("selectedTime", selectedTime);
 
-        // Print movie details to console
-        System.out.println("Movie Details:");
-        System.out.println("-------------");
-        System.out.println("Movie ID: " + movie.getId());
-        System.out.println("Title: " + movie.getTitle());
-        System.out.println("Description: " + movie.getDesc());
-        System.out.println("Price: " + movie.getPrice());
-        System.out.println("Image Path: " + movie.getImagePath());
-        System.out.println("Genre: " + movie.getGenre());
-        System.out.println("Duration: " + movie.getDuration());
+        //session
+        HttpSession session = request.getSession(false); // Retrieve the existing session
+        if (session != null) {
+            session.setAttribute("mId", movieId); // Add or update the attribute
+            session.setAttribute("selectedDate", selectedDate);
+            session.setAttribute("selectedTime", selectedTime);
+        } else {
+            session = request.getSession(); // Create a new session
+            session.setAttribute("mId", movieId); // Add or update the attribute
+            session.setAttribute("selectedDate", selectedDate);
+            session.setAttribute("selectedTime", selectedTime);
+        }
 
-        System.out.println("\nSelected Date: " + selectedDate);
-        System.out.println("Selected Time: " + selectedTime);
-//
-//        // Forward to single movie page
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("/seat_booking.jsp");
-//        dispatcher.forward(request, response);
+        // Forward to single movie page
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/seat_selection.jsp");
+        dispatcher.forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

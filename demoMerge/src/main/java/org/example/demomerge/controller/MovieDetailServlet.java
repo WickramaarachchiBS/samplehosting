@@ -17,6 +17,7 @@ public class MovieDetailServlet extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         // Get movie ID from request parameter
         int movieId = Integer.parseInt(request.getParameter("id"));
 

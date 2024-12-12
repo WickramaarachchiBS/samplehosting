@@ -26,12 +26,12 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("email", email);
             response.sendRedirect("index.jsp");
 
-        }else {
+        } else {
             // Set error message in the request
             request.setAttribute("loginError", "Invalid email or password");
             RequestDispatcher rd = request.getRequestDispatcher("login.jsp");
             rd.forward(request, response);
-        }
 
+        }
     }
 }

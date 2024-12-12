@@ -243,7 +243,7 @@
                     <div class="showtimes">
                         <button class="time-button">
                             <a class="timeTag"
-                               href="seat_selection.jsp">
+                               href="${pageContext.request.contextPath}/SeatBookingServlet?id=${movie.id}&date=<%=date.toString()%>&time=10:30 PM">
                                 10:30 AM
                             </a>
                         </button>

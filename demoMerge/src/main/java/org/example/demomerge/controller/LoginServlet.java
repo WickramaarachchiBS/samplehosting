@@ -22,6 +22,7 @@ public class LoginServlet extends HttpServlet {
         CustomerDAO cDAO = new CustomerDAO();
         if (cDAO.login(email, password)) {
 
+            // Create a session
             HttpSession session = request.getSession();
             session.setAttribute("email", email);
             response.sendRedirect("index.jsp");

@@ -458,14 +458,6 @@
         }
     </script>
 
-    <%
-        //retrieve the selected seats from the request
-        String seatsList = request.getParameter("selectedSeats");
-
-        //store the selected seats in the session
-        session.setAttribute("selectedSeats", seatsList);
-        session.setAttribute("totalPrice", (selectedSeats.length * seatPrice));
-    %>
 
 </body>
 </html>

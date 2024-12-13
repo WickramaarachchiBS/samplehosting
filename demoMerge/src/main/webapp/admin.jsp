@@ -301,6 +301,7 @@
         <div class="wrapper">
             <div class="box-area">
               <!-- Loop through movies -->
+
                 <c:forEach var="movie" items="${movies}">
                     <div class="box">
                         <img src="${pageContext.request.contextPath}/${movie.imagePath}" alt="${movie.id}${movie.title}" onerror="this.src='path/to/default/image.jpg'">
@@ -319,6 +320,7 @@
                         </div>
                     </div>
                 </c:forEach>
+
             </div>
         </div>
         <!-- /movie cards -->

@@ -207,11 +207,11 @@
 </main>
 
 
-<%--<script>--%>
-<%--    setTimeout(function() {--%>
-<%--      window.location.href = "index.jsp"; // Replace with your desired URL--%>
-<%--    }, 30000); // 30 seconds--%>
-<%--</script>--%>
+<script>
+    setTimeout(function() {
+      window.location.href = "index.jsp"; // Replace with your desired URL
+    }, 30000); // 30 seconds
+</script>
 
 </body>
 </html>

@@ -174,7 +174,7 @@
                         <input type="submit" value="submit">
                     </div>
                     <p>Don't have an account..? &nbsp; <u><a href="register.jsp">Register here</a></u></p>
-<!--                    <p>Login as an Admin - <u><a href="admin_login.jsp">Click here</a></u></p>     -->
+                    <p>Login as an Admin - <u><a href="admin_login.jsp">Click here</a></u></p>
                 </div>
             </form>
       </div>

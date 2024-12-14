@@ -130,7 +130,7 @@
   </div>
   <div class="footer-bottom">
     <p>&copy; 2024 Movie Land | Designed by VS</p>
-    <a href="RetrieveAdminMovieServlet">admin</a>
+    <a href="seatbooking.jsp">Seat booking</a>
     <a href="pay_confirm.jsp">admin</a>
   </div>
 </footer>

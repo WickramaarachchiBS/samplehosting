@@ -146,17 +146,17 @@
     <div class="title">Admin Login</div>
     <div class="content">
         <!-- form -->
-        <form class="" action="#" method="POST">
+        <form class="" action="AdminLoginServlet" method="POST" autocomplete="off">
             <div class="user-details">
                 <!-- email -->
                 <div class="input-box">
                     <span class="details">Email</span>
-                    <input type="text" placeholder="saman@gmail.com" required>
+                    <input type="email" placeholder="saman@gmail.com" name="adminemail" required>
                 </div>
                 <!-- password -->
                 <div class="input-box">
                     <span class="details">Password</span>
-                    <input type="text" placeholder="Password" required>
+                    <input type="password" placeholder="Password" name="adminpass" required>
                 </div>
                 <!-- Submit button -->
                 <div class="button">

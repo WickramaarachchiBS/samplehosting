@@ -46,7 +46,7 @@ public class SeatBookingServlet extends HttpServlet {
         }
 
         // Forward to single movie page
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/seat_selection.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/seat_selection2.jsp");
         dispatcher.forward(request, response);
     }
 

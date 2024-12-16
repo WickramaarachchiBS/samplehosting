@@ -15,6 +15,7 @@ public class RetrieveAllMovieServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         MovieDAO dao = new MovieDAO();
         List<Movie> movies = dao.getAllMovies();
+
         request.setAttribute("movies", movies);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("all_movie.jsp");

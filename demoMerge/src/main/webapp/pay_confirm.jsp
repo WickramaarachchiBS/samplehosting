@@ -208,45 +208,6 @@
     <p class="bottom-text">You will redirected to home page shortly.<a href="index.jsp">&nbsp;&nbsp;&nbsp;<u>Redirect Now →</u></a></p>
 </main>
 
-<!-- Feedback Modal -->
-<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="feedbackModalLabel">We Value Your Feedback!</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-
-                <form id="feedbackForm" action="FeedbackServlet" method="post">
-                    <div class="mb-3">
-                        <label for="customerName" class="form-label">Your Name</label>
-                        <input type="text" class="form-control" id="customerName" name="name" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="customerEmail" class="form-label">Email Address</label>
-                        <input type="email" class="form-control" id="customerEmail" name="email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="feedbackText" class="form-label">Your Feedback</label>
-                        <textarea class="form-control" id="feedbackText" rows="4" name="feedback" required></textarea>
-                    </div>
-                    <div class="mb-3">
-                        <label for="satisfactionRating" class="form-label">Satisfaction Rating</label>
-                        <select class="form-select" id="satisfactionRating" name="rating">
-                            <option value="5">Excellent</option>
-                            <option value="4">Very Good</option>
-                            <option value="3">Good</option>
-                            <option value="2">Fair</option>
-                            <option value="1">Poor</option>
-                        </select>
-                    </div>
-                    <button type="button" class="btn btn-primary" id="submitFeedbackBtn">Submit Feedback</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script>
     // Show modal automatically when page loads

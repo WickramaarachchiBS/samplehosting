@@ -118,7 +118,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="header">
+    <div class="header">T
         <h2>Payment Details</h2>
     </div>
 
@@ -137,36 +137,36 @@
         <input type="hidden" name="totalPrice" value="${totalPrice}">
         <input type="hidden" name="selectedSeats" value="${selectedSeats}">
 
-        <div class="input-container">
-            <i class="fas fa-user"></i>
-            <input type="text" name="username" id="username" placeholder="Username" required>
-        </div>
+<%--        <div class="input-container">--%>
+<%--            <i class="fas fa-user"></i>--%>
+<%--            <input type="text" name="username" id="username" placeholder="Username" required>--%>
+<%--        </div>--%>
 
-        <div class="input-container">
-            <i class="fas fa-envelope"></i>
-            <input type="email" name="email" id="email" placeholder="Email" required>
-        </div>
+<%--        <div class="input-container">--%>
+<%--            <i class="fas fa-envelope"></i>--%>
+<%--            <input type="email" name="email" id="email" placeholder="Email" required>--%>
+<%--        </div>--%>
 
-        <div class="input-container">
-            <i class="fas fa-credit-card"></i>
-            <input type="text" name="cardNumber" id="cardNumber" placeholder="Card Number" required>
-        </div>
+<%--        <div class="input-container">--%>
+<%--            <i class="fas fa-credit-card"></i>--%>
+<%--            <input type="text" name="cardNumber" id="cardNumber" placeholder="Card Number" required>--%>
+<%--        </div>--%>
 
-        <div class="input-container">
-            <i class="fas fa-calendar-alt"></i>
-            <input type="text" name="expiryDate" id="expiryDate" placeholder="Expiry Date (MM/YY)" required>
-        </div>
+<%--        <div class="input-container">--%>
+<%--            <i class="fas fa-calendar-alt"></i>--%>
+<%--            <input type="text" name="expiryDate" id="expiryDate" placeholder="Expiry Date (MM/YY)" required>--%>
+<%--        </div>--%>
 
-        <div class="input-container">
-            <i class="fas fa-lock"></i>
-            <input type="number" name="cvv" id="cvv" placeholder="CVV" required>
-        </div>
+<%--        <div class="input-container">--%>
+<%--            <i class="fas fa-lock"></i>--%>
+<%--            <input type="number" name="cvv" id="cvv" placeholder="CVV" required>--%>
+<%--        </div>--%>
     </form>
 
     <div id="paypal-button-container"></div>
+    <div><a href="feedback.jsp">Feedback</a></div>
 </div>
 
-<a href="PaymentServlet"> vrsvsvsvsvsvvwvwe</a>
 
 <script src="https://www.paypal.com/sdk/js?client-id=AR4r8Aj4nDxClPqSu2U70BkWPy_hpJMxqWo0mFCjG-3r8ytI6n4HltzfdWtohGL7V85WwDurw3g5tRjf&components=buttons"></script>
 <script>

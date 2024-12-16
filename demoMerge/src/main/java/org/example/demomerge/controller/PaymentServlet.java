@@ -29,23 +29,29 @@ public class PaymentServlet extends HttpServlet {
     }
 
     // Database details
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/cinemadb";
+    private static final String DB_URL = "jdbc:mysql://localhost:3306/test1";
     private static final String DB_USER = "root";
-    private static final String DB_PASSWORD = "1234";
+    private static final String DB_PASSWORD = "scorehero";
 
     // Email details
     private static final String EMAIL_FROM = "verusatharasinghapersonal@gmail.com";
     private static final String EMAIL_PASSWORD = "umxd kevv dinz bbhe";
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Get form data
         String movieTitle = request.getParameter("movieTitle");
         String selectedSeats = request.getParameter("selectedSeats");
         String totalPrice = request.getParameter("totalPrice");
         String username = request.getParameter("username");
         String email = request.getParameter("email");
+
+        System.out.println(movieTitle);
+        System.out.println(totalPrice);
+        System.out.println(username);
+        System.out.println(email);
+
+        sendConfirmationEmail(email, username, movieTitle, selectedSeats);
 
         // Simulate payment processing
         boolean paymentSuccessful = processPayment(
@@ -57,10 +63,10 @@ public class PaymentServlet extends HttpServlet {
             // Save booking details in the database
             if (saveBookingDetails(movieTitle, selectedSeats, totalPrice, username, email)) {
                 // Send confirmation email
-                sendConfirmationEmail(email, username, movieTitle, selectedSeats, totalPrice);
+//                sendConfirmationEmail(email, username, movieTitle, selectedSeats, totalPrice);
 
                 // Redirect to confirmation page
-                response.sendRedirect("confirmation.jsp");
+                response.sendRedirect("pay_confirm.jsp");
             } else {
                 response.getWriter().println("Error storing booking details. Please try again.");
             }
@@ -92,7 +98,7 @@ public class PaymentServlet extends HttpServlet {
             return false;
         }
     }
-    private void sendConfirmationEmail(String to, String username, String movieTitle, String selectedSeats, String totalPrice) {
+    private void sendConfirmationEmail(String to, String username, String movieTitle, String selectedSeats) {
 
         // Email properties
         Properties props = new Properties();
@@ -114,7 +120,7 @@ public class PaymentServlet extends HttpServlet {
             message.setSubject("Booking Confirmation");
             message.setText(String.format(
                     "Hello %s,\n\nThank you for booking!\n\nMovie: %s\nSeats: %s\nTotal Price: $%s\n\nEnjoy your movie!\n\nBest Regards,\nCinema Team",
-                    username, movieTitle, selectedSeats, totalPrice));
+                    username, movieTitle, selectedSeats));
 
             Transport.send(message);
         } catch (Exception e) {

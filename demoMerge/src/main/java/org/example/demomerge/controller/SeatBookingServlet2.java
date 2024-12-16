@@ -70,7 +70,6 @@ public class SeatBookingServlet2 extends HttpServlet {
             request.setAttribute("movieImage", movieImage);
             request.setAttribute("totalPrice", totalPriceInDollars);
             request.setAttribute("selectedSeats", selectedSeats);
-            request.setAttribute("totalPrice", totalPriceInDollars);
 
             RequestDispatcher dispatcher = request.getRequestDispatcher("payment2.jsp");
             dispatcher.forward(request, response);

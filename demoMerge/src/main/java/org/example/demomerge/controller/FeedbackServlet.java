@@ -22,11 +22,10 @@ public class FeedbackServlet extends HttpServlet {
         String name = request.getParameter("name");
         String email = request.getParameter("email");
         String feedbackText = request.getParameter("feedback");
-        int rating = Integer.parseInt(request.getParameter("rating"));
 
         System.out.println(name);
 
-        String query = "INSERT INTO feedback (name, email, feedback_text, rating, date) VALUES (?, ?, ?, ?, NOW())";
+        String query = "INSERT INTO feedback (name, email, feedback_text, date) VALUES (?, ?, ?, NOW())";
 
         try (Connection conn = DBConnection.getConnection();
             PreparedStatement stmt = conn.prepareStatement(query)) {
@@ -35,10 +34,13 @@ public class FeedbackServlet extends HttpServlet {
             stmt.setString(1, name);
             stmt.setString(2, email);
             stmt.setString(3, feedbackText);
-            stmt.setInt(4, rating);
 
             // Execute the statement
             stmt.executeUpdate();
+
+            // Redirect to the feedback page
+            RequestDispatcher rd = getServletContext().getRequestDispatcher("/pay_confirm.jsp");
+            rd.forward(request, response);
 
         } catch (Exception e) {
             e.printStackTrace();

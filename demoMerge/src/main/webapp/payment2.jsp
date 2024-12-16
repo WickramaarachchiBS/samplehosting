@@ -166,6 +166,8 @@
     <div id="paypal-button-container"></div>
 </div>
 
+<a href="PaymentServlet"> vrsvsvsvsvsvvwvwe</a>
+
 <script src="https://www.paypal.com/sdk/js?client-id=AR4r8Aj4nDxClPqSu2U70BkWPy_hpJMxqWo0mFCjG-3r8ytI6n4HltzfdWtohGL7V85WwDurw3g5tRjf&components=buttons"></script>
 <script>
     paypal.Buttons({

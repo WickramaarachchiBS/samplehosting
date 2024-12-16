@@ -169,6 +169,71 @@
                 display: block;
             }
         }
+
+        .search-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end; /* Align to the right */
+            margin-left: auto;
+            gap: 10px; /* Adds space between input and login icon */
+            flex-wrap: wrap; /* Allows wrapping for smaller screens */
+        }
+
+        .search-input {
+            padding: 8px 12px;
+            font-size: 14px;
+            border: 2px solid #f0c541; /* Golden border */
+            border-radius: 4px;
+            background-color: transparent;
+            color: #fff;
+            outline: none; /* Removes default focus outline */
+            transition: border-color 0.3s ease;
+            flex: 1; /* Responsive resizing */
+            max-width: 250px; /* Limit the width */
+            position: relative; /* For positioning the search icon */
+        }
+
+        .search-input:focus {
+            border-color: #fff; /* Border changes to white on focus */
+        }
+
+        .search-icon {
+            font-size: 18px; /* Adjust icon size */
+            color: #f0c541; /* Static color */
+            cursor: pointer; /* Pointer cursor on hover */
+            position: absolute;
+            right: 10px; /* Position the icon inside the input box */
+            top: 50%;
+            transform: translateY(-50%); /* Vertically center the icon */
+            background: transparent;
+            border: none;
+            outline: none;
+        }
+
+        .login-icon {
+            font-size: 18px; /* Adjust icon size */
+            color: #f0c541; /* Static color */
+            margin-left: 15px; /* Add spacing from the search bar */
+            margin-top: 10px; /* Ensure spacing between the icons */
+            transition: none; /* Disable any transition */
+        }
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .search-container {
+                flex-direction: column; /* Stack elements on small screens */
+                align-items: center; /* Center-align the content */
+            }
+
+            .search-input {
+                max-width: 100%; /* Make the input field take full width */
+            }
+
+            .login-icon {
+                margin-left: 0; /* Remove margin on small screens */
+                margin-top: 10px; /* Space the login icon below the search box */
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -190,8 +255,23 @@
             <a href="contact_us.jsp">Contact Us</a>
         </nav>
 
+        <div class="search-container">
+            <form action="searchResults.jsp" method="GET">
+                <div style="position: relative;">
+                    <input type="text" name="query" placeholder="Search for movies.." class="search-input" required>
+                    <button type="submit" style="display: none;">Search</button> <!-- Hidden button for form submission -->
+                    <button type="submit" class="search-icon" aria-label="Search">
+                        <i class="fas fa-search"></i> <!-- Search icon inside the input -->
+                    </button>
+                </div>
+            </form>
+<%--            <a href="login.jsp">--%>
+<%--                <i class="fas fa-user login-icon"></i> <!-- Login icon below the search box -->--%>
+<%--            </a>--%>
+        </div>
+
         <div class="auth-section">
-            <a href="index.jsp" class="logo1">Movie|Land</a> &nbsp;
+<%--            <a href="index.jsp" class="logo1">Movie|Land</a> &nbsp;--%>
 
             <% if (isLoggedIn) { %>
             <div class="user-dropdown">

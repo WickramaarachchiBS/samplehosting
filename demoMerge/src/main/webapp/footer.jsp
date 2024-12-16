@@ -132,6 +132,7 @@
     <p>&copy; 2024 Movie Land | Designed by VS</p>
     <a href="seatbooking.jsp">Seat booking</a>
     <a href="pay_confirm.jsp">admin</a>
+    <a href="pay_confirm.jsp">PaymentServlet</a>
   </div>
 </footer>
 </body>

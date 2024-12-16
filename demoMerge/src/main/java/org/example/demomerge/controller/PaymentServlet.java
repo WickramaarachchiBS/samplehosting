@@ -75,8 +75,8 @@ public class PaymentServlet extends HttpServlet {
                 cardNumber.length() == 16 && expiryDate.matches("\\d{2}/\\d{2}") && cvv.length() == 3;
     }
 
-    private boolean saveBookingDetails(String movieTitle, String selectedSeats, String totalPrice,
-                                       String username, String email) {
+    private boolean saveBookingDetails(String movieTitle, String selectedSeats, String totalPrice, String username, String email) {
+
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD)) {
             String sql = "INSERT INTO bookings (movieTitle, selectedSeats, totalPrice, username, email) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -92,8 +92,8 @@ public class PaymentServlet extends HttpServlet {
             return false;
         }
     }
-    private void sendConfirmationEmail(String to, String username, String movieTitle,
-                                       String selectedSeats, String totalPrice) {
+    private void sendConfirmationEmail(String to, String username, String movieTitle, String selectedSeats, String totalPrice) {
+
         // Email properties
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");

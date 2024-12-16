@@ -13,6 +13,8 @@
     <!-- title -->
     <link rel="icon" type="image/x-icon" href="Assets/letter-m.png">
     <title>ThankYou...</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <!-- CSS -->
     <link rel="stylesheet" href="pay_confirm.jsp">
     <style>
@@ -206,12 +208,118 @@
     <p class="bottom-text">You will redirected to home page shortly.<a href="index.jsp">&nbsp;&nbsp;&nbsp;<u>Redirect Now →</u></a></p>
 </main>
 
+<!-- Feedback Modal -->
+<div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="feedbackModalLabel">We Value Your Feedback!</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form id="feedbackForm" action="FeedbackServlet" method="post">
+                    <div class="mb-3">
+                        <label for="customerName" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="customerName" name="name" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="customerEmail" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="customerEmail" name="email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="feedbackText" class="form-label">Your Feedback</label>
+                        <textarea class="form-control" id="feedbackText" rows="4" name="feedback" required></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="satisfactionRating" class="form-label">Satisfaction Rating</label>
+                        <select class="form-select" id="satisfactionRating" name="rating">
+                            <option value="5">Excellent</option>
+                            <option value="4">Very Good</option>
+                            <option value="3">Good</option>
+                            <option value="2">Fair</option>
+                            <option value="1">Poor</option>
+                        </select>
+                    </div>
+                    <button type="button" class="btn btn-primary" id="submitFeedbackBtn">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <script>
+    // Show modal automatically when page loads
+    document.addEventListener('DOMContentLoaded', function() {
+        var feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+        feedbackModal.show();
+
+        // Handle form submission
+        document.getElementById('feedbackForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Collect form data
+            var name = document.getElementById('customerName').value;
+            var email = document.getElementById('customerEmail').value;
+            var feedback = document.getElementById('feedbackText').value;
+            var rating = document.getElementById('satisfactionRating').value;
+
+            // Here you would typically send the data to a server
+            // For this example, we'll just log to console
+            console.log('Feedback Submitted:', {
+                name: name,
+                email: email,
+                feedback: feedback,
+                rating: rating
+            });
+
+            // Close the modal
+            feedbackModal.hide();
+
+            // Optional: Show a thank you message
+            alert('Thank you for your feedback!');
+        });
+    });
+
+    //redirect script
     setTimeout(function() {
       window.location.href = "index.jsp"; // Replace with your desired URL
     }, 30000); // 30 seconds
+
 </script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
+        feedbackModal.show();
+
+        document.getElementById('submitFeedbackBtn').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent the default form submission
+
+            const form = document.getElementById('feedbackForm');
+            const formData = new FormData(form);
+
+            // Use fetch to submit the form via AJAX
+            fetch('FeedbackServlet', {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.text())
+                .then(data => {
+                    alert('Feedback submitted successfully!');
+                    feedbackModal.hide();  // Close the modal
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Something went wrong.');
+                });
+        });
+    });
+</script>
+
+<!-- Bootstrap JS and Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
 
 </body>
 </html>

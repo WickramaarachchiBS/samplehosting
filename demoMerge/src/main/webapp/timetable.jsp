@@ -204,6 +204,7 @@
 <body>
     <!-- navbar -->
     <jsp:include page="navbar.jsp" />
+
     <main>
         <div class="banner">
             <div class="container">

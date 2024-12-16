@@ -11,13 +11,15 @@ import java.sql.*;
 public class SeatBookingServlet2 extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        String totalPrice = request.getParameter("totalPrice");
+        request.setAttribute("totalPrice", totalPrice);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         String movieIdStr = request.getParameter("movieId");
         String selectedSeats = request.getParameter("selectedSeats");
+        String totalPrice = request.getParameter("totalPrice");
 
         if (movieIdStr == null || movieIdStr.isEmpty() || selectedSeats == null || selectedSeats.isEmpty()) {
             response.sendError(HttpServletResponse.SC_BAD_REQUEST, "Missing required parameters.");
@@ -34,16 +36,19 @@ public class SeatBookingServlet2 extends HttpServlet {
 
         try {
             // Get movie details from the database
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/cinemadb", "root", "1234");
-            String movieQuery = "SELECT name, image_url, showtime FROM movies1 WHERE id = ?";
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1", "root", "scorehero");
+            String movieQuery = "SELECT mname, image_path, showtime FROM movies WHERE mid = ?";
             pstmt = con.prepareStatement(movieQuery);
             pstmt.setInt(1, movieId);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                movieTitle = rs.getString("name");
-                movieImage = rs.getString("image_url");
+                movieTitle = rs.getString("mname");
                 showTime = rs.getString("showtime");
+
+                String fullPath = rs.getString("image_path");
+                String relativePath = fullPath.substring(fullPath.lastIndexOf("webapp/") + 7);
+                movieImage = relativePath;
             }
 
             // Book selected seats in the database
@@ -57,8 +62,7 @@ public class SeatBookingServlet2 extends HttpServlet {
             }
 
             // Redirect to the payment page with seat and movie details
-            int seatPriceInRupees = 700;
-            double seatPriceInDollars = 1.0;
+            double seatPriceInDollars = 1000;
             double totalPriceInDollars = seats.length * seatPriceInDollars;
 
             request.setAttribute("movieTitle", movieTitle);
@@ -66,8 +70,9 @@ public class SeatBookingServlet2 extends HttpServlet {
             request.setAttribute("movieImage", movieImage);
             request.setAttribute("totalPrice", totalPriceInDollars);
             request.setAttribute("selectedSeats", selectedSeats);
+            request.setAttribute("totalPrice", totalPriceInDollars);
 
-            RequestDispatcher dispatcher = request.getRequestDispatcher("pay)confirm.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("payment2.jsp");
             dispatcher.forward(request, response);
 
         } catch (SQLException e) {

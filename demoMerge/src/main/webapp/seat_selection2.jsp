@@ -15,8 +15,17 @@
             align-items: center;
             height: 100vh;
             flex-direction: column;
+            opacity: 0;
+            animation: fadeIn 1s ease-in-out forwards;
         }
-
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
         .container {
             max-width: 900px;
             width: 100%;
@@ -133,23 +142,29 @@
             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1", "root", "scorehero");
 
             // Query to fetch the movie details
-            String movieQuery = "SELECT name, image_url, showtime FROM movies1 WHERE id = ?";
+            String movieQuery = "SELECT * FROM movies WHERE mid = ?";
             pstmt = con.prepareStatement(movieQuery);
             pstmt.setInt(1, movieId);
             rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                movieTitle = rs.getString("name");
-                movieImage = rs.getString("image_url");
+                movieTitle = rs.getString("mname");
                 showTime = rs.getString("showtime");
+
+                String fullPath = rs.getString("image_path");
+                String relativePath = fullPath.substring(fullPath.lastIndexOf("webapp/") + 7);
+                movieImage = relativePath;
             }
+
+            String sessionData = (String) session.getAttribute("selectedDate");
     %>
     <div class="movie-details">
         <div class="movie-image">
-            <img src="<%= movieImage %>" alt="Movie Image">
+            <img src=" <%=movieImage%> " alt="Movie Image">
         </div>
         <h1><%= movieTitle %></h1>
-        <p>Showtime: <%= showTime %></p>
+
+        <p>Showtime: ${sessionScope.selectedDate}, ${sessionScope.selectedTime}</p>
     </div>
 
     <div class="seat-grid">
@@ -179,19 +194,22 @@
     </div>
 
     <div class="summary">
-        Total Price: $<span id="totalPrice">0.00</span>
-    </div>
+        Total Price: Rs.<span id="totalPrice">0.00</span> <br>
+        <p class="ppperson" style="color: #ea861a; font-size: small"> Price per person : $10 </p>
 
-    <form action="SeatBookingServlet" method="POST">
-        <input type="hidden" name="movieId" value="<%= movieId %>" />
-        <input type="hidden" name="selectedSeats" id="selectedSeats" />
-        <button type="submit">Proceed to Payment</button>
-    </form>
+
+        <form action="SeatBookingServlet2" method="POST">
+            <input type="hidden" name="movieId" value="<%= movieId %>" />
+            <input type="hidden" name="selectedSeats" id="selectedSeats" />
+            <input type="hidden" id="hiddenTotalPrice" name="totalPrice" value="0.00">
+            <button type="submit">Proceed to Payment</button>
+        </form>
+    </div>
 </div>
 
 <script>
     let selectedSeats = [];
-    const seatPrice = 10; // Price per seat
+    const seatPrice = 1000; // Price per seat
     const totalPriceElem = document.getElementById('totalPrice');
 
     document.querySelectorAll('.seat.available').forEach(seat => {
@@ -210,6 +228,14 @@
             totalPriceElem.textContent = (selectedSeats.length * seatPrice).toFixed(2);
         });
     });
+</script>
+<script>
+    // JavaScript function to set the hidden input value before form submission
+    function sendTotalPrice() {
+        const totalPrice = document.getElementById("totalPrice").innerText; // Get the totalPrice text
+        document.getElementById("hiddenTotalPrice").value = parseFloat(totalPrice); // Update hidden input
+        return true; // Allow form submission
+    }
 </script>
 </body>
 </html>

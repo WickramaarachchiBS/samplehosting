@@ -157,30 +157,7 @@
 </head>
 <body>
 <!-- navbar -->
-<header>
-    <nav>
-        <a href="index.jsp" class="active">Home</a>
-        <a href="movie.jsp">Movies</a>
-        <a href="location.jsp">Location</a>
-        <a href="AboutUs.jsp">About Us</a>
-        <a href="ContactUs.jsp">Contact Us</a>
-    </nav>
-
-    <div class="search-container">
-        <form action="searchResults.jsp" method="GET">
-            <div style="position: relative;">
-                <input type="text" name="query" placeholder="Search for movies.." class="search-input" required>
-                <button type="submit" style="display: none;">Search</button> <!-- Hidden button for form submission -->
-                <button type="submit" class="search-icon" aria-label="Search">
-                    <i class="fas fa-search"></i> <!-- Search icon inside the input -->
-                </button>
-            </div>
-        </form>
-        <a href="login.jsp">
-            <i class="fas fa-user login-icon"></i> <!-- Login icon below the search box -->
-        </a>
-    </div>
-</header>
+<jsp:include page="navbar.jsp" />
 
 <div class="cardArea">
     <div class="header">

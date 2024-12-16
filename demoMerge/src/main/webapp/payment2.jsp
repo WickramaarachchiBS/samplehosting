@@ -1,226 +1,215 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: USER
-  Date: 11/12/2024
-  Time: 8:31 PM
-  To change this template use File | Settings | File Templates.
---%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- title -->
-    <title>Payment Checkout Form</title>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Page</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Ubuntu');
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Ubuntu', sans-serif;
-        }
-
         body {
-            background: #2E2E2E; /* Dark background */
-            margin: 0 10px;
-        }
-
-        .payment {
-            background: #3A3A3A; /* Darker background for form */
-            max-width: 400px;
-            margin: 80px auto;
-            padding: 35px;
-            padding-top: 70px;
-            border-radius: 5px;
-            position: relative;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-        }
-
-        .payment h2 {
-            text-align: center;
-            letter-spacing: 2px;
-            margin-bottom: 40px;
-            color: #FF9800; /* Golden orange text */
-        }
-
-        .form .label {
-            display: block;
-            color: #FF9800; /* Golden orange label */
-            margin-bottom: 6px;
-        }
-
-        .input {
-            padding: 13px 0px 13px 25px;
-            width: 100%;
-            text-align: center;
-            border: 2px solid #FF9800; /* Golden orange border */
-            border-radius: 5px;
-            letter-spacing: 1px;
-            word-spacing: 3px;
-            outline: none;
-            font-size: 16px;
-            color: #fff; /* White text */
-            background: #555555; /* Dark background for inputs */
-        }
-
-        .input:focus {
-            border-color: #FF5722; /* Focused input with a red-orange border */
-        }
-
-        .card-grp {
+            font-family: 'Roboto', sans-serif;
+            background-color: #121212;
+            color: #f5c518;
+            margin: 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
         }
 
-        .card-item {
-            width: 48%;
+        .container {
+            width: 90%;
+            max-width: 450px;
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
         }
 
-        .space {
+        .movie-details {
             margin-bottom: 20px;
         }
 
-        .icon-relative {
+        .movie-details img {
+            width: 150px;
+            height: 220px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .movie-details h3 {
+            color: #f5c518;
+        }
+
+        .payment-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .input-container {
             position: relative;
         }
 
-        .icon-relative .fas,
-        .icon-relative .far {
-            position: absolute;
-            bottom: 12px;
-            left: 15px;
-            font-size: 20px;
-            color: #FF9800; /* Golden orange icons */
-        }
-
-        .btn {
-            margin-top: 40px;
-            background: #FF9800; /* Golden orange button */
-            padding: 12px 20px;
-            text-align: center;
-            color: #fff; /* White text on button */
-            border-radius: 5px;
-            cursor: pointer;
-            display: block;
-            margin: 40px auto 0; /* Center the button */
+        .input-container input {
             width: 100%;
+            padding: 10px;
+            padding-left: 40px;
+            background-color: #2a2a2a;
+            border: 1px solid #444;
+            border-radius: 5px;
+            color: #fff;
+            font-size: 14px;
+            box-sizing: border-box;
         }
 
-        .payment-logo {
+        .input-container input:focus {
+            outline: none;
+            border-color: #f5c518;
+        }
+
+        .input-container i {
             position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 100px;
-            background: #FF9800; /* Golden orange background */
-            border-radius: 50%;
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-            text-align: center;
-            line-height: 85px;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);
+            color: #f5c518;
         }
 
-        .payment-logo:before {
-            content: "";
-            position: absolute;
-            top: 5px;
-            left: 5px;
-            width: 90px;
-            height: 90px;
-            background: #2E2E2E; /* Dark background for logo */
-            border-radius: 50%;
+        .header {
+            margin-bottom: 20px;
         }
 
-        .payment-logo p {
-            position: relative;
-            color: #fff; /* White text for logo */
-            font-family: 'Baloo Bhaijaan', cursive;
-            font-size: 58px;
+        .header h2 {
+            font-size: 28px;
+            margin: 0;
+            color: #f5c518;
         }
 
-        .payment-logo .fas {
-            font-size: 40px; /* Adjust icon size */
+        #paypal-button-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
         }
 
-        /* Responsive design */
-        @media screen and (max-width: 420px) {
-            .card-grp {
-                flex-direction: column;
-            }
-            .card-item {
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
                 width: 100%;
-                margin-bottom: 20px;
+                padding: 10px;
             }
-            .btn {
-                margin-top: 20px;
+
+            .movie-details img {
+                width: 120px;
+                height: 180px;
+            }
+
+            .payment-form input {
+                padding: 10px 20px;
             }
         }
     </style>
 </head>
 <body>
-
-
-
-<div class="wrapper">
-    <div class="payment">
-        <div class="payment-logo">
-            <p><i class="fas fa-lock"></i></p> <!-- Lock icon inside the logo -->
-        </div>
-        <h2>Payment via Paypal</h2>
-        <form action="PaymentServlet" method="POST" class="form">
-
-            <!-- User Info Section -->
-            <div class="card space icon-relative">
-                <label class="label">Full Name:</label>
-                <input type="text" name="fullName" class="input" placeholder="John Doe" required>
-                <i class="fas fa-user"></i>
-            </div>
-
-            <div class="card space icon-relative">
-                <label class="label">Email Address:</label>
-                <input type="email" name="email" class="input" placeholder="youremail@example.com" required>
-                <i class="fas fa-envelope"></i>
-            </div>
-
-            <div class="card space icon-relative">
-                <label class="label">Phone Number:</label>
-                <input type="text" name="phone" class="input" placeholder="123-456-7890" required>
-                <i class="fas fa-phone-alt"></i>
-            </div>
-
-            <!-- Card Info Section -->
-            <div class="card space icon-relative">
-                <label class="label">Card Holder:</label>
-                <input type="text" name="cardHolder" class="input" placeholder="John Market" required>
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="card space icon-relative">
-                <label class="label">Card Number:</label>
-                <input type="text" name="cardNumber" class="input" placeholder="Card Number" required>
-                <i class="far fa-credit-card"></i>
-            </div>
-            <div class="card-grp space">
-                <div class="card-item icon-relative">
-                    <label class="label">Expiry Date:</label>
-                    <input type="text" name="expiryDate" class="input" placeholder="MM / YY" required>
-                    <i class="far fa-calendar-alt"></i>
-                </div>
-                <div class="card-item icon-relative">
-                    <label class="label">CVC:</label>
-                    <input type="text" name="cvc" class="input" placeholder="000" required>
-                    <i class="fas fa-lock"></i>
-                </div>
-            </div>
-
-            <!-- Submit Button -->
-            <button type="submit" class="btn">Pay Now</button>
-        </form>
+<div class="container">
+    <div class="header">
+        <h2>Payment Details</h2>
     </div>
+
+    <div class="movie-details">
+        <h3><i class="fas fa-film"></i> Movie: <c:out value="${movieTitle}" /></h3>
+        <img src="<c:out value="${movieImage}" />" alt="Movie Image" />
+        <p><strong>Showtime:</strong> <c:out value="${showtime}" /></p>
+        <p><strong>Selected Seats No:</strong> <c:out value="${selectedSeats}" /></p>
+        <p><strong>Total Price: Rs.<c:out value="${totalPrice}" /></strong></p>
+
+        ${totalPrice}
+    </div>
+
+    <form action="PaymentServlet" method="POST" class="payment-form">
+        <input type="hidden" name="movieTitle" value="${movieTitle}">
+        <input type="hidden" name="totalPrice" value="${totalPrice}">
+        <input type="hidden" name="selectedSeats" value="${selectedSeats}">
+
+        <div class="input-container">
+            <i class="fas fa-user"></i>
+            <input type="text" name="username" id="username" placeholder="Username" required>
+        </div>
+
+        <div class="input-container">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" id="email" placeholder="Email" required>
+        </div>
+
+        <div class="input-container">
+            <i class="fas fa-credit-card"></i>
+            <input type="text" name="cardNumber" id="cardNumber" placeholder="Card Number" required>
+        </div>
+
+        <div class="input-container">
+            <i class="fas fa-calendar-alt"></i>
+            <input type="text" name="expiryDate" id="expiryDate" placeholder="Expiry Date (MM/YY)" required>
+        </div>
+
+        <div class="input-container">
+            <i class="fas fa-lock"></i>
+            <input type="number" name="cvv" id="cvv" placeholder="CVV" required>
+        </div>
+    </form>
+
+    <div id="paypal-button-container"></div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.15/jquery.mask.min.js"></script>
+<script src="https://www.paypal.com/sdk/js?client-id=AR4r8Aj4nDxClPqSu2U70BkWPy_hpJMxqWo0mFCjG-3r8ytI6n4HltzfdWtohGL7V85WwDurw3g5tRjf&components=buttons"></script>
+<script>
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '<c:out value="${totalPrice}" />'
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Payment completed by ' + details.payer.name.given_name);
+
+                var form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'PaymentServlet';
+
+                form.appendChild(createInput('movieTitle', '${movieTitle}'));
+                form.appendChild(createInput('totalPrice', '${totalPrice}'));
+                form.appendChild(createInput('selectedSeats', '${selectedSeats}'));
+                form.appendChild(createInput('username', document.getElementById('username').value));
+                form.appendChild(createInput('email', document.getElementById('email').value));
+                form.appendChild(createInput('paypalPaymentID', data.orderID)); // PayPal Order ID
+
+                document.body.appendChild(form);
+                form.submit();
+            });
+        },
+        onError: function(err) {
+            alert('Payment Error: ' + err);
+        }
+    }).render('#paypal-button-container');
+
+    function createInput(name, value) {
+        var input = document.createElement('input');
+        input.type = 'hidden';
+        input.name = name;
+        input.value = value;
+        return input;
+    }
+</script>
 
 </body>
 </html>

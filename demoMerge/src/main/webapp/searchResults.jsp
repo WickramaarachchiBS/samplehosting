@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="Assets/letter-m.png">
     <title>Search Results</title>
     <style>
         body {
@@ -129,12 +130,12 @@
         ResultSet rs = null;
 
         try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
             // Assuming you have a JDBC connection method
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1", "root", "1234");
-            String sql = "SELECT * FROM movies WHERE title LIKE ?";
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test1", "root", "scorehero");
+            String sql = "SELECT * FROM movies WHERE mname LIKE ?";
             ps = con.prepareStatement(sql);
             ps.setString(1, "%" + query + "%");
-
             rs = ps.executeQuery();
 
             // Check if there are results
@@ -142,10 +143,13 @@
                 out.println("<p>No movies found for your search query.</p>");
             } else {
                 while (rs.next()) {
-                    String movieTitle = rs.getString("title");
+                    String movieTitle = rs.getString("mname");
                     String movieDescription = rs.getString("description");
-                    String movieImageUrl = rs.getString("image_url");
                     String movieShowtime = rs.getString("showtime");
+
+                    String fullPath = rs.getString("image_path");
+                    String relativePath = fullPath.substring(fullPath.lastIndexOf("webapp/") + 7);
+                    String movieImageUrl = request.getContextPath() + "/" + relativePath;
     %>
 
     <div class="movie-item">

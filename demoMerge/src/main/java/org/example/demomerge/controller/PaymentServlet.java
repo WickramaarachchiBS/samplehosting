@@ -98,7 +98,7 @@ public class PaymentServlet extends HttpServlet {
             return false;
         }
     }
-    private void sendConfirmationEmail(String to, String username, String movieTitle, String selectedSeats) {
+    private void sendConfirmationEmail(String to, String email, String movieTitle, String selectedSeats) {
 
         // Email properties
         Properties props = new Properties();
@@ -120,7 +120,7 @@ public class PaymentServlet extends HttpServlet {
             message.setSubject("Booking Confirmation");
             message.setText(String.format(
                     "Hello %s,\n\nThank you for booking!\n\nMovie: %s\nSeats: %s\nTotal Price: $%s\n\nEnjoy your movie!\n\nBest Regards,\nCinema Team",
-                    username, movieTitle, selectedSeats));
+                    email, movieTitle, selectedSeats));
 
             Transport.send(message);
         } catch (Exception e) {

@@ -1,3 +1,5 @@
+<%@ page import="jakarta.mail.Session" %>
+<%@ page import="java.util.Properties" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
@@ -164,8 +166,20 @@
     </form>
 
     <div id="paypal-button-container"></div>
+    <form action="TempServlet" method="POST" class="payment-form">
+        <input type="hidden" name="movieTitle" value="${movieTitle}">
+        <input type="hidden" name="totalPrice" value="${totalPrice}">
+        <input type="hidden" name="selectedSeats" value="${selectedSeats}">
+        <input type="hidden" name="email" value="rangekillerrangekiller@gmail.com" required>
+        <button type="submit">Pay with Card</button>
+    </form>
     <div><a href="feedback.jsp">Feedback</a></div>
 </div>
+
+<%
+
+%>
+
 
 
 <script src="https://www.paypal.com/sdk/js?client-id=AR4r8Aj4nDxClPqSu2U70BkWPy_hpJMxqWo0mFCjG-3r8ytI6n4HltzfdWtohGL7V85WwDurw3g5tRjf&components=buttons"></script>
